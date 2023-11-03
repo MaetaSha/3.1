@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table creating with HTML and CSS</title>
+</head>
+<body>
+    <style>
+        table{
+	        width: 40%;
+	        height: 200px;
+	        border-color: black;
+	        text-align: center;
+	        background-color:RGB(120 201 133);
+	        font-family: 'Times New Roman', Times, serif;
+	        font-size: large;
+        }
+        body{
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+        }
+
+    </style>
+
+    <table border="2">
+        <caption>A test table with merged cells</caption>
+        <tr>
+            <th rowspan="2"> </th>
+            <th colspan="2">Average</th>
+            <th rowspan="2">Red <br>eyes</th>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>weight</td>
+        </tr>
+        <tr>
+            <td>Males</td>
+            <td>1.9</td>
+            <td>0.003</td>
+            <td>40%</td>
+        </tr>
+        <tr>
+            <td>Females</td>
+            <td>1.7</td>
+            <td>0.002</td>
+            <td>43%</td>
+        </tr>
+    </table>
+</body>
+</html>
