@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+    <link rel="stylesheet" href="lab_04.css">
+    <style>
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f9fafb;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgb(0, 0,0,0.3);
+    width: 400px;
+}
+h2{
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding:10px;
+    font-size: 14px;
+}
+.gender-control{
+    padding-bottom: 20px;
+}
+.form button{
+    margin: auto;
+    padding:6px;
+    padding-top: 5px;
+    cursor: pointer;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 17px;
+    width: 100%;
+
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Personal Details</h2>
+        <form class="form" name="myForm" onsubmit="return validateForm()" action="" method="POST">
+            <div class="form-control">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br>
+            </div>
+
+            <div class="form-control">
+                <label for="email">Email:</label>
+                <input type="emial" name="email" id="email"><br>    
+            </div>
+
+            <div class="form-control">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" id="phone"><br>
+            </div>
+
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" ><br>
+            </div>
+
+            <div class="gender-control">
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+            </div>
+
+            <button type="submit" name="submit">Submit</button>
+
+        </form>
+
+    </div>
+    
+
+    <script>
+        function validateForm(){
+            //name validation 
+            var name=document.forms["myForm"]["name"].value;
+            var nameRegex=/^[a-zA-Z]+$/;
+            if(name=="" || name.length<6 || !nameRegex.test(name)){
+                alert("Please enter a valid name with 6 characters.");
+                return false;
+            }
+        
+                //Email validation
+                var email=document.forms["myForm"]["email"].value;
+                var emailRegex=/\S+@\S+\.\S+/;
+                if(email=="" || !emailRegex.test(email)){
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                // Phone Number validation
+                var phone=document.forms["myForm"]["phone"].value;
+                var phoneRegex=/^[0-9]{11}$/;
+                if(phone=="" || !phoneRegex.test(phone)){
+                    alert("Please enter a valid Phone number with 10 digit.");
+                    return false;
+                }
+        
+                // password validation
+                var password=document.forms["myForm"]["password"].value;
+                if(password=="" || password.length<6){
+                    alert("Please enter a valid password with length not less than 6 charecter");
+                    return false;
+                }
+                alert("Successfully submitted the registration form!")
+        
+        }</script>
+</body>
+</html>
