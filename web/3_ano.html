@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        div.input {
+            background-color: antiquewhite;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label.email {
+            margin-right: 50px;
+        }
+        input {
+            border-radius: 6px;
+        }
+        form {
+            padding: 10px;
+        }
+        span.submit {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <h1>Personal Details</h1>
+        <form action="" method="POST">
+            <label for="name">First Name : </label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+            <label class="email" for="email">Email : </label>
+            <input type="email" id="email" name="email" placeholder="Enter valid email"><br><br>
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="password" placeholder="Enter 6 digit password"><br><br>
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" value="male">
+            <label for="gender">Male</label>
+            <input type="radio" name="gender" value="female">
+            <label for="gender">Female</label><br>
+
+            <span class="submit"><input type="submit" name="submit" value="Submit"></span>
+        </form>
+    </div>
+    <?php
+    // database connection code
+    if(isset($_POST['submit'])) {
+        $con = mysqli_connect('localhost', 'root', '', 'mustofa');
+
+        // Get the post records
+        $txtName = $_POST['name'];
+        $txtEmail = $_POST['email'];
+        $txtPassword = $_POST['password'];
+        $txtGender = $_POST['gender'];
+
+        // Database insert SQL code
+        $sql = "INSERT INTO data(`name`, `email`, `password`, `gender`) VALUES ('$txtName', '$txtEmail', '$txtPassword', '$txtGender')";
+
+        // Insert into the database
+        $rs = mysqli_query($con, $sql);
+        if($rs) {
+            echo "Contact Records Inserted";
+        } else {
+            echo "Error: " . mysqli_error($con);
+        }
+    }
+    ?>
+</body>
+</html>
